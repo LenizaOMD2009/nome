@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cliente</title>
+    <!-- ADICIONE ESTA LINHA ABAIXO -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button onclick="window.electronAPI.goHome()">Home</button>
+    <button onclick="window.electronAPI.openPage('listausuario.html')">Lista de usuarios</button>
+    <br>
+    <br>
+    <input type="text" placeholder="Nome completo cliente" id="full_name">
+    <br>
+    <br>
+    <input type="text" placeholder="Email" id="email">
+    <br>
+    <br>
+    <button id="save-button">Salvar Cliente</button>
+
+    <script src="cliente.js"></script>
+</body>
+
+</html>

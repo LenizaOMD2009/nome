@@ -13,6 +13,10 @@ const __dirname = path.dirname(__filename);
 const PAGES_DIR = path.resolve(__dirname, '..'); // app/renderer/main
 //Importa o repositório de produtos para permitir a inserção de dados de produtos a partir do renderer via IPC
 import ProductRepository from '../../../database/repositories/ProductRepository.js';
+import UsersRepository from '../../../database/repositories/UsersRepository.js';
+import CompanyRepository from '../../../database/repositories/CompanyRepository.js';
+import SupplierRepository from '../../../database/repositories/SupplierRepository.js';
+import CustomerRepository from '../../../database/repositories/CustomerRepository.js';
 // Exporta a classe como padrão do módulo, tornando-a disponível para importação em outros arquivos
 export default class MainWindowFactory {
     // Método estático — pode ser chamado direto na classe sem precisar instanciá-la: MainWindowFactory.createWindow()
@@ -35,6 +39,8 @@ export default class MainWindowFactory {
                 nodeIntegration: false,
             },
         });
+
+
         if (process.env.APP_ENV === 'development') {
             // Abre automaticamente o DevTools (console do desenvolvedor) junto com a janela
             mainWindow.webContents.openDevTools();
@@ -43,12 +49,33 @@ export default class MainWindowFactory {
         ipcMain.handle('window:open-page', async (_event, pageName) => {
             // Carrega o arquivo HTML correspondente ao nome da página recebida, dentro do diretório PAGES_DIR
             await mainWindow.loadFile(path.join(PAGES_DIR, pageName));
+            return true; // Retorna true para indicar que a página foi carregada com sucesso
         });
         // Registra um handler IPC que escuta o evento 'window:save-product' 
         // disparado pelo renderer para salvar dados de produto
         ipcMain.handle('product:save', async (_event, productData) => {
             return await ProductRepository.insert(productData);
         });
+        // No arquivo mainwindowfactory.js
+
+        // 1. Corrija o nome do evento para 'users:save' (minúsculo)
+        // 2. Corrija o nome da variável do repositório (UsersRepository em vez de Users/Userst)
+        ipcMain.handle('users:save', async (_event, userData) => {
+            return await UsersRepository.insert(userData); // Verifique se o import está como UsersRepository
+        });
+
+        ipcMain.handle('company:save', async (_event, data) => {
+            return await CompanyRepository.insert(data);
+        });
+
+        ipcMain.handle('supplier:save', async (_event, data) => {
+            return await SupplierRepository.insert(data);
+        });
+
+        ipcMain.handle('customer:save', async (_event, data) => {
+            return await CustomerRepository.insert(data);
+        });
+
         // Carrega o arquivo index.html na janela assim que ela é criada, exibindo a tela inicial
         mainWindow.loadFile(path.join(PAGES_DIR, 'index.html'));
         // Retorna a instância da janela criada para que possa ser referenciada em outros lugares da aplicação
