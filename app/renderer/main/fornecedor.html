@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Fornecedor</title>
 </head>
 
@@ -21,6 +22,115 @@
     <button id="save-button">Salvar Fornecedor</button>
 
     <script src="fornecedor.js"></script>
+        <style> 
+/* style.css - Extensão para o formulário de Cliente */
+
+/* Container de Layout (Centraliza o formulário) */
+body {
+    flex-direction: column;
+    padding: 40px 20px;
+    align-items: center;
+}
+
+/* Estilização dos Inputs */
+input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    backdrop-filter: blur(10px);
+}
+
+input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: #6366f1;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
+}
+
+input[type="text"]::placeholder {
+    color: #64748b;
+}
+/* Botões de Navegação (Home e Lista) - AJUSTADOS */
+button:not(#save-button) {
+    width: 100%; /* Ocupa a largura total do container */
+    max-width: 440px; /* Mesma largura máxima do botão salvar */
+    padding: 16px; /* Mesmo preenchimento vertical */
+    margin-top: 20px;
+    
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    border-radius: 12px; /* Arredondamento igual ao de salvar */
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:not(#save-button):hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: scale(1.03); /* Efeito de hover igual ao de salvar */
+}
+
+/* Ajuste no seletor de espaçamento para garantir que fiquem empilhados */
+input + input, 
+input + button, 
+button + input,
+button + button {
+    margin-top: 20px;
+}
+
+/* Botão de Ação Principal (Salvar Cliente) */
+#save-button {
+    width: 100%;
+    max-width: 440px; /* Um pouco mais largo que os inputs */
+    padding: 16px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#save-button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.6);
+    filter: brightness(1.1);
+}
+
+#save-button:active {
+    transform: scale(0.98);
+}
+
+/* Ajuste nos Br's para não quebrar o layout flex */
+br {
+    display: none; /* Removemos os BRs para controlar via margin no CSS */
+}
+
+/* Espaçamento entre elementos usando CSS (mais profissional que <br>) */
+input + input, input + button, button + input {
+    margin-top: 20px;
+}
+
+</style>
 </body>
 
 </html>

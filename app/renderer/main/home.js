@@ -44,7 +44,7 @@ companyButton.addEventListener('click', async () => {
         if (!window.electronAPI || typeof window.electronAPI.openPage !== 'function') {
             throw new Error('API do Electron não foi injetada pelo preload');
         }
-        await window.electronAPI.openPage('listacompanhia.html');
+        await window.electronAPI.openPage('listaempresa.html');
     } catch (error) {
         console.error('Erro ao abrir a janela de empresas:', error);
     }

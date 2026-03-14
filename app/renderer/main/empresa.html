@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cliente</title>
+    <title>empresa</title>
     <!-- ADICIONE ESTA LINHA ABAIXO -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <button onclick="window.electronAPI.goHome()">Home</button>
-    <button onclick="window.electronAPI.openPage('listacliente.html')">Lista de clientes</button>
+    <button onclick="window.electronAPI.openPage('listaempresa.html')">Lista de empresas</button>
     <br>
     <br>
-    <input type="text" placeholder="Nome completo cliente" id="full_name">
+    <input type="text" placeholder="Nome completo empresa" id="name">
     <br>
     <br>
-    <input type="text" placeholder="Email" id="email">
+    <input type="text" placeholder="tax_id" id="tax_id">
     <br>
     <br>
-    <button id="save-button">Salvar Cliente</button>
+    <button id="save-button">Salvar Empresa</button>
 
-    <script src="cliente.js"></script>
+    <script src="empresa.js"></script>
     <style> 
-/* style.css - Extensão para o formulário de Cliente */
+/* style.css - Extensão para o formulário de Empresa */
 
 /* Container de Layout (Centraliza o formulário) */
 body {

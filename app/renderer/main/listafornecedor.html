@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Lista de fornecedores</title>
 </head>
 
@@ -13,6 +14,105 @@
     <button id="cadastro-button">Cadastro</button>
 
     <script type="module" src="listafornecedor.js"></script>
+    <style> 
+/* style.css - Extensão para a Lista de Clientes */
+
+/* Ajuste do Header da Lista (Onde ficam os botões de topo) */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha o conteúdo no topo */
+    padding: 30px;
+    gap: 20px;
+}
+
+/* Container para os botões de ação do topo */
+.actions-header {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 20px;
+}
+
+/* Botão Voltar (Sutil/Discreto) */
+#voltar-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#voltar-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: #fff;
+}
+
+/* Botão Cadastro (Destaque Positivo) */
+#cadastro-button {
+    background: rgba(16, 185, 129, 0.15); /* Verde esmeralda suave */
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#cadastro-button:hover {
+    background: #10b981;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Sugestão de Estilo para a Tabela que virá do JS */
+/* Se o seu JS criar uma table, use estas classes: */
+table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    overflow: hidden; /* Garante o border-radius nas pontas */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+th {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    text-align: left;
+    color: #6366f1; /* Cor de destaque para os títulos */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+}
+</style>
 </body>
 
 </html>

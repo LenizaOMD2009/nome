@@ -1,20 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deskivo - pagina inicial</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Seu CSS -->
+
+
+    <title>Deskivo - Página Inicial</title>
 </head>
 
 <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Deskivo</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <button class="nav-link active" id="home-button">Home</button>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">
+                            Cadastro
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" id="cliente-link">Cliente</button></li>
+                            <li><button class="dropdown-item"
+                                    onclick="window.electronAPI.openPage('listaproduto.html')">Produto</button></li>
+                            <li><button class="dropdown-item" id="usuario-link">Usuário</button></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- MENU CENTRAL -->
+    <div class="main-menu">
+
+        <button class="menu-card" id="product-button">
+            📦
+            <span>Produto</span>
+        </button>
+
+        <button class="menu-card" id="user-button">
+            👤
+            <span>Usuário</span>
+        </button>
+
+        <button class="menu-card" id="fornecedor-button">
+            🚚
+            <span>Fornecedor</span>
+        </button>
+
+        <button class="menu-card" id="company-button">
+            🏢
+            <span>Empresas</span>
+        </button>
+
+        <button class="menu-card" id="customer-button">
+            🤝
+            <span>Cliente</span>
+        </button>
+
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
     <script type="module" src="home.js"></script>
-    <button id="product-button">Produto</button>
-    <button id="user-button">Usuario</button>
-    <button id="fornecedor-button">Fornecedor</button>
-    <button id="company-button">Empresas</button>
-    <button id="customer-button">Cliente</button>
-    
+    <style>
+        body{
+    background: linear-gradient(180deg,#050914,#02040a);
+    height:100vh;
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* menu central */
+.main-menu{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    margin-top:120px;
+}
+
+/* cards */
+.menu-card{
+    width:180px;
+    height:110px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(15,20,30,0.6);
+    color:white;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+    transition:0.25s;
+}
+
+.menu-card span{
+    margin-top:8px;
+    font-size:16px;
+}
+
+.menu-card:hover{
+    transform:translateY(-5px);
+    background:rgba(30,40,60,0.8);
+    box-shadow:0 0 20px rgba(0,150,255,0.3);
+}
+    </style>
 </body>
 
 </html>
