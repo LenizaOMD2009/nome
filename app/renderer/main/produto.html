@@ -5,14 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Produto</title>
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <button onclick="window.electronAPI.goHome()">Home</button>
-    <button onclick="window.electronAPI.openPage('listaproduto.html')">Lista de produtos</button>
-    <br>
-    <br>
+    <div class="container py-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><span onclick="window.electronAPI.openPage('index.html')" style="cursor: pointer;">Home</span></li>
+                <li class="breadcrumb-item"><span onclick="window.electronAPI.openPage('listaproduto.html')" style="cursor: pointer;">Lista de Produtos</span></li>
+                <li class="breadcrumb-item active" aria-current="page">Cadastro de Produto</li>
+            </ol>
+        </nav>
+        <div class="mb-3">
+            <button class="btn btn-light me-2" onclick="window.electronAPI.goHome()">Home</button>
+            <button class="btn btn-light" onclick="window.electronAPI.openPage('listaproduto.html')">Lista de produtos</button>
+        </div>
+    </div>
+    <div class="container">
+
     <input type="text" placeholder="Nome do produto" id="name">
     <br>
     <br>
@@ -21,117 +34,114 @@
     <br>
     <br>
     <button id="save-button">Salvar Produto</button>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="produto.js"></script>
         <style> 
 /* style.css - Extensão para o formulário de Cliente */
-
-/* Container de Layout (Centraliza o formulário) */
-body {
-    flex-direction: column;
-    padding: 40px 20px;
-    align-items: center;
+/* 1. Definição de Variáveis (Mude tudo aqui rapidamente) */
+:root {
+    --bg-dark: #0f172a;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-dim: #64748b;
+    --radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Estilização dos Inputs */
-input[type="text"] {
-    width: 100%;
-    max-width: 400px;
-    padding: 14px 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: #fff;
+/* 2. Layout Centralizado com Grid (Substitui os margins repetidos) */
+body {
+    background-color: var(--bg-dark);
+    display: grid;
+    place-content: center; /* Centraliza vertical e horizontal */
+    min-height: 100vh;
+    gap: 20px; /* Controla o espaço entre TODOS os elementos do formulário */
+    padding: 20px;
     font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+}
+
+/* 3. Estilo Base para Inputs e Buttons (Evita repetição) */
+input[type="text"], 
+button {
+    width: 100%;
+    min-width: 320px;
+    max-width: 440px;
+    padding: 16px 20px;
+    border-radius: var(--radius);
     font-size: 1rem;
-    transition: all 0.3s ease;
-    outline: none;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+/* 4. Customização dos Inputs */
+input[type="text"] {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
     backdrop-filter: blur(10px);
+    outline: none;
 }
 
 input[type="text"]:focus {
     background: rgba(255, 255, 255, 0.07);
-    border-color: #6366f1;
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
-    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
-input[type="text"]::placeholder {
-    color: #64748b;
-}
-/* Botões de Navegação (Home e Lista) - AJUSTADOS */
+/* 5. Estilo dos Botões Secundários (Navegação) */
 button:not(#save-button) {
-    width: 100%; /* Ocupa a largura total do container */
-    max-width: 440px; /* Mesma largura máxima do botão salvar */
-    padding: 16px; /* Mesmo preenchimento vertical */
-    margin-top: 20px;
-    
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #cbd5e1;
-    border-radius: 12px; /* Arredondamento igual ao de salvar */
-    font-size: 1rem;
-    font-weight: 700;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    font-weight: 600;
+    cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 button:not(#save-button):hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    transform: scale(1.03); /* Efeito de hover igual ao de salvar */
+    background: var(--glass-border);
+    color: white;
 }
 
-/* Ajuste no seletor de espaçamento para garantir que fiquem empilhados */
-input + input, 
-input + button, 
-button + input,
-button + button {
-    margin-top: 20px;
-}
-
-/* Botão de Ação Principal (Salvar Cliente) */
+/* 6. Botão de Destaque (Salvar) */
 #save-button {
-    width: 100%;
-    max-width: 440px; /* Um pouco mais largo que os inputs */
-    padding: 16px;
-    margin-top: 10px;
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    background: var(--primary);
     border: none;
-    border-radius: 12px;
     color: white;
     font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
 }
 
 #save-button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.6);
-    filter: brightness(1.1);
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.23);
 }
 
 #save-button:active {
-    transform: scale(0.98);
+    transform: translateY(0);
 }
 
-/* Ajuste nos Br's para não quebrar o layout flex */
-br {
-    display: none; /* Removemos os BRs para controlar via margin no CSS */
-}
+/* Remove BRs e limpa placeholders */
+br { display: none; }
+::placeholder { color: var(--text-dim); }
 
-/* Espaçamento entre elementos usando CSS (mais profissional que <br>) */
-input + input, input + button, button + input {
-    margin-top: 20px;
-}
 
 </style>
+    <!-- ... resto do seu HTML ... -->
+
+    <!-- Scripts Necessários (IMPORTANTE: O Swal deve vir antes do produto.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net"></script> 
+    <script src="produto.js"></script>
+
 </body>
 
 </html>

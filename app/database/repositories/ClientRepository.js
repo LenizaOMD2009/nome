@@ -1,16 +1,16 @@
 import { ilike, or, sql, asc } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import Connection from '../Connection.js';
-import { company } from '../schema.js'; // Esta é a sua tabela
+import { client } from '../schema.js'; // Esta é a sua tabela
 
-export default class CompanyRepository {
+export default class ClientRepository {
     static async insert(data) {
-        // Renomeie 'company' para 'conn' aqui:
+        // Renomeie 'client' para 'conn' aqui:
         const conn = await Connection.connect(); 
         const db = drizzle(conn);
         
         try {
-            const result = await db.insert(company) // Agora 'company' refere-se à tabela do schema
+            const result = await db.insert(client) // Agora 'client' refere-se à tabela do schema
                 .values({
                     name: data.name,
                     cpf: data.cpf
@@ -34,22 +34,22 @@ export default class CompanyRepository {
             const terms = `%${data?.term}%`;
             try {
                 //Abre a conexão com banco de dados
-                const companies = await Connection.connect();
-                const db = drizzle(companies);
+                const clients = await Connection.connect();
+                const db = drizzle(clients);
                 const whereClause =
                     rawSearch !== ''
                         ? or(
-                            sql`${company.id}::text ILIKE ${terms}`,
-                            ilike(company.name, terms),
-                            sql`${company.cnpj}::numeric ILIKE ${terms}`
+                            sql`${client.id}::text ILIKE ${terms}`,
+                            ilike(client.name, terms),
+                            sql`${client.cpf}::numeric ILIKE ${terms}`
                         )
                         : undefined;
     
                 const result = await db
                     .select()
-                    .from(company)
+                    .from(client)
                     .where(whereClause)
-                    .orderBy(asc(company.name, company.id, company.cnpj))
+                    .orderBy(asc(client.name, client.id, client.cpf))
                     .offset(data?.offset)
                     .limit(data?.limit);
     
@@ -57,7 +57,7 @@ export default class CompanyRepository {
                     data: result
                 };
             } catch (error) {
-                console.error('[CompanyRepository] Erro na busca:', error.message);
+                console.error('[ClientRepository] Erro na busca:', error.message);
                 return {
                     recordsTotal: 0,
                     recordsFiltered: 0,

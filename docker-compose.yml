@@ -2,7 +2,7 @@ services:
   # Serviço do banco de dados PostgreSQL
   postgres:
     # Imagem oficial do PostgreSQL baseada em Alpine Linux
-    image: postgres:18.1-alpine3.23
+    image: postgres:18.3-alpine3.23
     # Nome fixo do container do banco
     container_name: app_postgres
     restart: unless-stopped
@@ -23,7 +23,7 @@ services:
       # Script SQL executado automaticamente na primeira inicialização
       - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:${DB_PORT}"
     # Conecta o container à rede interna do projeto
     networks:
       - app_network

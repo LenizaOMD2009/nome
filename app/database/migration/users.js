@@ -10,7 +10,7 @@ export const users = pgTable('users', {
 
 export const customer = pgTable('customer', {
     id: bigserial('id').primaryKey(),
-    nome: text('name', { length: 150 }).notNull(),
+    name: text('name', { length: 150 }).notNull(),
     email: varchar('email', { length: 255 }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
 });

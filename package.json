@@ -5,16 +5,75 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "build:win": "electron-builder --win",
+        "build:linux": "electron-builder --linux",
+        "build:all": "electron-builder --win --linux"
+    },
+    "build": {
+        "appId": "com.Deskivo.app",
+        "productName": "Deskivo",
+        "copyright": "Deskivo 2024",
+        "directories": {
+            "output": "C:\\Deskivo"
+        },
+        "files": [
+            "app/**/*",
+            "node_modules/**/*",
+            "package.json"
+        ],
+        "extraFiles": [
+            {
+                "from": ".env",
+                "to": ".env"
+            }
+        ],
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ]
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "shortcutName": "Deskivo"
+        },
+        "linux": {
+            "target": [
+                {
+                    "target": "AppImage",
+                    "arch": [
+                        "x64"
+                    ]
+                },
+                {
+                    "target": "deb",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ],
+            "icon": "app/assets/icon.png",
+            "category": "Office"
+        },
+        "electronVersion": "40.7.0"
     },
     "devDependencies": {
         "drizzle-kit": "^0.31.9",
         "electron": "^40.7.0",
-        "electron-builder": "^26.8.1"
+        "electron-builder": "^25.1.8"
     },
     "dependencies": {
         "dotenv": "^17.3.1",
         "drizzle-orm": "^0.45.1",
-        "pg": "^8.20.0"
+        "pg": "^8.20.0",
+        "postgres": "^3.4.8"
     }
 }

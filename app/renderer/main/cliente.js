@@ -3,12 +3,12 @@ const saveButton = document.getElementById('save-button');
 
 saveButton.addEventListener('click', async () => {
     const data = {
-        full_name: document.getElementById('full_name').value,
-        email: document.getElementById('email').value,
+        name: document.getElementById('name').value,
+        cpf: document.getElementById('cpf').value,
     };
 
     try {
-        const result = await window.electronAPI.saveCustomer(data);
+        const result = await window.electronAPI.saveClient(data);
         console.log('cliente salvo com sucesso:', result);
 
     } catch (error) {

@@ -1,3 +1,4 @@
+
 const saveButton = document.getElementById('save-button');
 
 saveButton.addEventListener('click', async () => {
@@ -8,8 +9,8 @@ saveButton.addEventListener('click', async () => {
 
     try {
         const result = await window.electronAPI.saveProduct(data);
-        console.log('Produto salvo com sucesso:', result);
-       
+        console.log('produto salvo com sucesso:', result);
+
     } catch (error) {
         console.error('Erro ao salvar produto:', error);
         alert('Erro ao salvar produto!');

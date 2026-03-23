@@ -9,7 +9,7 @@ const pool = new Pool({
     max: Number(process.env.DB_POOL_MAX || 10),
     idleTimeoutMillis: Number(process.env.DB_IDLE_TIMEOUT_MS || 10000),
     connectionTimeoutMillis: Number(process.env.DB_CONNECTION_TIMEOUT_MS || 5000),
-    application_name: process.env.DB_APP_NAME || 'deskivo-electron',
+    application_name: process.env.DB_APP_NAME || 'venom-electron',
 });
 
 export default class Connection {

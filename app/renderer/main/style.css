@@ -92,11 +92,11 @@
             filter: drop-shadow(0 0 8px var(--accent-color));
         }
 
-        #product-button::before { content: "📦"; }
-        #user-button::before { content: "👤"; }
-        #fornecedor-button::before { content: "🚚"; }
-        #company-button::before { content: "🏢"; }
-        #customer-button::before { content: "🤝"; }
+        #product-button::before { content: ""; }
+        #user-button::before { content: ""; }
+        #fornecedor-button::before { content: ""; }
+        #company-button::before { content: ""; }
+        #customer-button::before { content: ""; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }

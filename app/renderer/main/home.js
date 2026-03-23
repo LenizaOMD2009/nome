@@ -2,7 +2,7 @@ const productButton = document.getElementById('product-button');
 const userButton = document.getElementById('user-button');
 const fornecedorButton = document.getElementById('fornecedor-button');
 const companyButton = document.getElementById('company-button');
-const customerButton = document.getElementById('customer-button');
+const clientButton = document.getElementById('client-button');
 
 productButton.addEventListener('click', async () => {
     try {
@@ -50,7 +50,7 @@ companyButton.addEventListener('click', async () => {
     }
 });
 
-customerButton.addEventListener('click', async () => {
+clientButton .addEventListener('click', async () => {
     try {
         if (!window.electronAPI || typeof window.electronAPI.openPage !== 'function') {
             throw new Error('API do Electron não foi injetada pelo preload');
@@ -60,3 +60,17 @@ customerButton.addEventListener('click', async () => {
         console.error('Erro ao abrir a janela de clientes:', error);
     }
 });
+
+const vendaButton = document.getElementById('venda-button');
+if (vendaButton) {
+    vendaButton.addEventListener('click', async () => {
+        try {
+            if (!window.electronAPI || typeof window.electronAPI.openPage !== 'function') {
+                throw new Error('API do Electron não foi injetada pelo preload');
+            }
+            await window.electronAPI.openPage('venda.html');
+        } catch (error) {
+            console.error('Erro ao abrir a janela de vendas:', error);
+        }
+    });
+}
