@@ -4,7 +4,7 @@ const saveButton = document.getElementById('save-button');
 saveButton.addEventListener('click', async () => {
     const data = {
         name: document.getElementById('name').value,
-        cpf: document.getElementById('cnpj').value,
+        cnpj: document.getElementById('cnpj').value,
     };
 
     try {

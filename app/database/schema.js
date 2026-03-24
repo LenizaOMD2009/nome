@@ -17,7 +17,7 @@ export const users = pgTable("users", {
 });
 export const supplier = pgTable("supplier", {
     id: serial("id").primaryKey(),
-    contactName: text("contact_name").notNull(),
+    contact_name: text("contact_name").notNull(),
     category: text("category").notNull(),
 });
 export const company = pgTable("company", {

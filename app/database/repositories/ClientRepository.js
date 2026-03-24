@@ -41,7 +41,7 @@ export default class ClientRepository {
                         ? or(
                             sql`${client.id}::text ILIKE ${terms}`,
                             ilike(client.name, terms),
-                            sql`${client.cpf}::numeric ILIKE ${terms}`
+                            sql`${client.cpf}::text ILIKE ${terms}`
                         )
                         : undefined;
     

@@ -13,7 +13,7 @@ export default class CompanyRepository {
             const result = await db.insert(company) // Agora 'company' refere-se à tabela do schema
                 .values({
                     name: data.name,
-                    cpf: data.cpf
+                    cnpj: data.cnpj
                 })
                 .returning();
             
@@ -41,7 +41,7 @@ export default class CompanyRepository {
                         ? or(
                             sql`${company.id}::text ILIKE ${terms}`,
                             ilike(company.name, terms),
-                            sql`${company.cnpj}::numeric ILIKE ${terms}`
+                            sql`${company.cnpj}::text ILIKE ${terms}`
                         )
                         : undefined;
     

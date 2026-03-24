@@ -5,6 +5,7 @@ import { supplier } from '../schema.js'; // Esta é a sua tabela
 
 export default class SupplierRepository {
     static async insert(data) {
+        console.log(data);
         // Renomeie 'company' para 'conn' aqui:
         const conn = await Connection.connect(); 
         const db = drizzle(conn);

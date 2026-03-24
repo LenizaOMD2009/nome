@@ -41,7 +41,7 @@ export default class ProductRepository {
                         ? or(
                             sql`${products.id}::text ILIKE ${terms}`,
                             ilike(products.name, terms),
-                            sql`${products.price}::numeric ILIKE ${terms}`
+                            sql`${products.price}::text ILIKE ${terms}`
                         )
                         : undefined;
     

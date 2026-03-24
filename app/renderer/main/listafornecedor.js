@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         serverSide: true, // Deixa o banco filtrar e paginar
         ajax: async (data, callback) => {
             const filter = {
-                term: data?.search?.value || '', // Termo da pesquisa
+                term: data?.search?.value, // Termo da pesquisa
                 limit: data?.length || 10,       // Registros por página
                 offset: data?.start || 0,        // Ponto de início
                 orderType: data?.order[0]?.dir, 
